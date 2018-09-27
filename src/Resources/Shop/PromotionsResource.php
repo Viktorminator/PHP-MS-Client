@@ -58,13 +58,14 @@ class PromotionsResource extends Resource
      */
     public function cancelCoupon($basketId, string $couponCode, $userId)
     {
-        $params = [
-            "basketId" => $basketId,
-            "couponCode" => $couponCode,
-            "userId" => $userId
-        ];
+		$params = [
+			"basketId" => $basketId,
+			"couponCode" => $couponCode,
+			"userId" => $userId,
+			"method" => 'discardcoupon'
+		];
 
-        $response = $this->handler->handle('POST', $params, 'discard');
+		$response = $this->handler->handle('POST', $params);
 
         //TODO: refactor to make method
         return $response;
